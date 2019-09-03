@@ -1,0 +1,24 @@
+Summarizing test cases of jmacro
+// Including a file
+@{:/home/george/inc}
+
+// Defining a named macro
+@{#MACRO( Arg1, Arg2)} macro $Arg1 text here $Arg2 @
+
+// Use a named macro defined before
+$MACRO(1,2)
+
+// Nested macros
+@{#MACROFOO( Arg )} nested text $Arg $MACRO(3,4) middle @{3,J} test $J @ end @
+
+$MACROFOO(5)
+
+// Looping
+@{2,I} Repeat this 2 times with I = $I @
+// Nested looping
+@{2, I} Repeat 2 times @{3,J} test $I $J @ @
+
+// Conditions
+@{?FLAG2} Conditional text here @
+@{?FLAG1 & (?FLAG5 | ?BOO2)} text there@
+@{( ?FLAG2 | ?BOO2 ) & !?BOO2 }text everywhere@

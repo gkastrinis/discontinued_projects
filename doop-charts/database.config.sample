@@ -1,0 +1,6 @@
+<?php
+$db_hostname = 'remotehost';
+$db_username = 'DoopCharts';
+$db_password = 'password';
+$db_database = 'DoopCharts';
+?>

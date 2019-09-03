@@ -1,0 +1,7 @@
+@{#FLAG1}
+Some text here.
+// Defining a flag
+@{#FLAG2}
+@{#FLAG3}
+// Flags can also be defined as arguments in the format: -DFLAGNAME
+That way the flag FLAGNAME is defined

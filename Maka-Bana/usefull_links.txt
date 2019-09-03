@@ -1,0 +1,16 @@
+http://www.quepublishing.com/articles/article.aspx?p=21119
+http://stackoverflow.com/questions/1097366/java-swing-revalidate-vs-repaint
+http://docs.oracle.com/javase/6/docs/api/javax/swing/SwingUtilities.html#invokeLater(java.lang.Runnable)
+http://www.java2s.com/Tutorial/Java/0261__2D-Graphics/Togetallavailablefontsinyoursystem.htm
+http://stackoverflow.com/questions/1951558/list-of-java-swing-ui-properties
+http://www.cs101.org/courses/fall05/resources/swinglayout/
+http://stackoverflow.com/questions/16412311/positioning-of-swing-components-java-jpanel-jbutton-jframe
+http://www.javapractices.com/topic/TopicAction.do?Id=23
+http://stackoverflow.com/questions/1958636/what-is-double-brace-initialization-in-java
+http://www.fileformat.info/info/unicode/block/miscellaneous_symbols_and_pictographs/list.htm
+http://www.fileformat.info/info/unicode/char/1f47e/index.htm
+http://www.fileformat.info/info/unicode/char/1f479/index.htm
+http://www.fileformat.info/info/unicode/char/1f47a/index.htm
+https://www.google.gr/webhp?sourceid=chrome-instant&ion=1&espv=2&es_th=1&ie=UTF-8#q=eclipse%20include%20font%20in%20project&es_th=1
+https://color.adobe.com/create/color-wheel/?base=2&rule=Complementary&selected=3&name=My%20Color%20Theme&mode=rgb&rgbvalues=0.7,0.5680495520472865,0.17210072696868361,1,0.8614901271299973,0.4458581813838337,1,0.8364947435987746,0.34585818138383373,0.23424494502435378,0.3175344563743786,0.7,0.34585818138383373,0.462836305065188,1&swatchOrder=0,1,2,3,4
+https://pixlr.com/editor/

@@ -1,0 +1,29 @@
+open {repository}
+
+echo 'Branching Nodes'
+exec <doc>
+    _(n,d,a) <- node:child(n,x), node:child(n,y), x!=y,
+			node:branch[x] = b1, node:branch[y] = b2, b1!=b2,
+			node:date(n,d), node:author(n,a). 
+</doc> --print
+
+echo 'Merging Nodes'
+exec <doc>
+    _(n,d,a) <- node:child(x,n), node:child(y,n), x!=y,
+			node:branch[x] = b1, node:branch[y] = b2, b1!=b2,
+			node:date(n,d), node:author(n,a). 
+</doc> --print
+
+echo 'Closed Branches'
+exec <doc> _(b,e) <- branch:closedAfterNode[b] = n, node:author[n] = e. </doc> --print
+
+echo 'Most recent commit date for each existing branch'
+exec <doc> _[b] = maxDate <- agg<<maxDate = max(date)>>(node:branch[n] = b, node:date[n] = date). </doc> --print
+
+echo 'Open Branches along with their latest message'
+exec <doc>
+	_(b,d) <- Branch(b), !(branch:closedAfterNode[b] = _),
+			node:branch[n] = b, node:desc[n] = d,
+			node:date[n] = maxDate, _mostRecentCommit[b] = maxDate.
+	_mostRecentCommit[b] = maxDate <- agg<<maxDate = max(date)>>(node:branch[n] = b, node:date[n] = date).
+</doc> --print

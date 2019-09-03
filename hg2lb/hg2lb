@@ -1,0 +1,223 @@
+#!/bin/bash
+
+set -e      # Exit immediately if a command exits with a nonzero exit status
+set -u      # Treat unset variables as an error
+#set -x     # Print commands and their arguments as they are executed (debugging)
+
+SCRIPT_PATH="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROMPT=$'\e[1;32mhg2lb>\e[0m'
+PROMPT_WAR=$'\e[1;33mhg2lb>\e[0m'
+PROMPT_ERR=$'\e[1;31mhg2lb>\e[0m'
+
+if [ $# = 0 ] ; then
+	echo "$PROMPT_ERR must provide the root path of the mercurial repository to be imported"
+	exit 1
+fi
+
+REPO=$1 && cd $REPO
+
+if ! [ -d $REPO/.hg ] ; then
+	echo "$PROMPT_ERR provided path is not a mercurial repository"
+	exit 2
+fi
+function startTimer() { export start=$(/bin/date -u "+%s") ; }
+function elapsedTime() { end=$(/bin/date -u "+%s") && echo " $(expr $end - $start)s" && export start=$end ; }
+
+
+###############################################################################
+
+startTimer
+
+REPO_URL=$(cat .hg/hgrc | grep '^default' | awk '{print $3}')
+echo "$PROMPT repository '$REPO_URL'"
+echo -n "$PROMPT generating input facts..."
+
+Start='-----------------------\n'
+NodeInfo='NODE:{node|short}\nREV:{rev}\nBRANCH:{branch}\nCHILDREN:{children}\nTAGS:{tags}\n'
+CommitInfo='DATE:{date|isodatesec}\nDESC:{desc|strip}\n'
+AuthorInfo='AUTHOR:{author|person}\nEMAIL:{author|email}\n'
+Changes='+:{file_adds}\n-:{file_dels}\n*:{file_mods}\n'
+
+(
+echo "changeset = \"${Start}${NodeInfo}${CommitInfo}${AuthorInfo}${Changes}\""
+#echo 'file_add = "{file_add}\n"'
+#echo 'file_del = "{file_del}\n"'
+#echo 'file_mod = "{file_mod}\n"'
+) > apiStyle
+
+(hg log --style apiStyle && rm apiStyle && echo 'EOL') | (
+	rm -rf csvs && mkdir csvs
+
+	while read line ; do
+		if [ "x$line" = 'xEOL' ] ; then break ; fi
+
+		read node && read rev && read branch && read children && read tags
+		read date
+	
+		# Maybe a multiline description message (and an author afterwards)
+		author=''
+		read desc
+		while read line ; do
+			if [ $(echo "$line" | grep -o '^AUTHOR') ] ; then author=$line ; break ; fi
+
+			desc="${desc}\n$line"
+		done
+		if [ "x$author" = 'x' ] ; then read author ; fi
+
+		read email
+		read filesAdd && read filesDel && read filesMod
+
+		node=$(echo $node | sed 's/NODE://')
+		rev=$(echo $rev | sed 's/REV://')
+		branch=$(echo $branch | sed 's/BRANCH://')
+		children=$(echo $children | sed 's/CHILDREN:/x /')
+		tags="\"$(echo $tags | sed 's/TAGS://' | sed 's/"/\\"/g')\""
+		date=$(echo $date | sed 's/DATE://' | sed -r 's/(\+[0-9]{2})3[0]/\100/')
+		desc="\"$(echo "$desc" | sed 's/DESC://' | sed 's/"/\\"/g')\""
+		author=$(echo $author | sed 's/AUTHOR://' | sed 's/"//')
+		email=$(echo $email | sed 's/EMAIL://')
+		authorKey="$author|$email"
+		filesAdd=$(echo $filesAdd | sed 's/+:/x /')
+		filesDel=$(echo $filesDel | sed 's/-:/x /')
+		filesMod=$(echo $filesMod | sed 's/*:/x /')
+
+		(cd csvs
+		echo "$node" >> Node.csv
+		echo "$branch" >> Branch.csv
+		echo "$tags" >> Tag.csv
+		echo "$authorKey" >> Author.csv
+
+		echo "$node,$rev" >> node_revision.csv
+		if [ "x$tags" != 'x' ] ; then echo "$node,$tags" >> node_tag.csv ;  fi
+		echo "$node,$date" >> node_date.csv
+		echo "$node,$desc" >> node_desc.csv
+		echo "$node,$email" >> node_author.csv
+		echo "$node,$branch" >> node_branch.csv
+		echo "$authorKey,$author" >> author_name.csv
+		echo "$authorKey,$email" >> author_email.csv
+
+		set $children && shift
+		while [ $# != 0 ] ; do echo "$node,$(echo $1 | awk -F ':' '{print $2}')" >> node_child.csv && shift ; done
+		set $filesAdd && shift
+		while [ $# != 0 ] ; do echo "$node,$1" >> node_files_add.csv && shift ; done
+		set $filesDel && shift
+		while [ $# != 0 ] ; do echo "$node,$1" >> node_files_del.csv && shift ; done
+		set $filesMod && shift
+		while [ $# != 0 ] ; do echo "$node,$1" >> node_files_mod.csv && shift ; done
+		)
+
+	done
+)
+
+hg branches -c | (
+	touch csvs/branch_closedAfterNode.csv
+	while read line ; do
+		array=(${line// / })
+		branch=${array[0]}
+		node=$(echo ${array[1]} | awk -F ':' '{print $2}')
+		closed=$(echo $line | grep -o '(closed)' || true)
+		if [ "x$closed" = 'x' ] ; then continue ; fi
+		echo "$branch,$node" >> csvs/branch_closedAfterNode.csv
+	done
+)
+elapsedTime
+
+#echo -n "$PROMPT removing duplicate entries..."
+#for f in csvs/*.csv ; do sort $f | uniq -u > csvs/tmp.csv && mv csvs/tmp.csv $f ; done
+#elapsedTime
+
+
+###############################################################################
+
+echo -n "$PROMPT generating import logic..."
+
+predicates=(
+"Author 1"
+"Branch 1"
+"File 1"
+"Node 1"
+"Tag 1"
+
+"author:name 2"
+"author:email 2"
+"branch:closedAfterNode 2"
+"node:revision 2 2:int[64]"
+"node:tag 2"
+"node:date 2 2:datetime"
+"node:desc 2"
+"node:author 2"
+"node:branch 2"
+
+"node:child 2"
+"node:files:add 2"
+"node:files:del 2"
+"node:files:mod 2"
+)
+
+rm -rf imports && mkdir imports
+
+(cd imports
+for i in `seq 0 $(( ${#predicates[@]} - 1 ))` ; do
+	set ${predicates[i]}
+	predName=$1
+	predFName=$(echo $1 | sed 's/:/_/g')
+	arity=$2
+	shift 2
+
+	(
+	echo -n '_fin('
+	for j in $(seq 1 $arity) ; do
+		echo -n "v$j"
+		if [ $j != $arity ] ; then echo -n ', ' ; fi
+	done
+	echo -n ') -> '
+	for j in $(seq 1 $arity) ; do
+		type='string'
+		if [ $# != 0 ] ; then
+			array=(${1//:/ })
+			index=${array[0]}
+			if [ $index = $j ] ; then type=${array[1]} ; shift ; fi
+		fi
+		echo -n "$type(v$j)"
+		if [ $j != $arity ] ; then echo -n ', ' ; fi
+	done
+	echo '.'
+	echo
+	echo "lang:physical:filePath[\`_fin] = \"csvs/$predFName.csv\"."
+	echo 'lang:physical:delimiter[`_fin] = ",".'
+	echo 'lang:physical:hasColumnNames[`_fin] = false.'
+	echo
+	echo -n "+${predName}("
+	for j in $(seq 1 $arity) ; do
+		echo -n "v$j"
+		if [ $j != $arity ] ; then echo -n ', ' ; fi
+	done
+	echo -n ') <- _fin('
+	for j in $(seq 1 $arity) ; do
+		echo -n "v$j"
+		if [ $j != $arity ] ; then echo -n ', ' ; fi
+	done
+	echo ').'
+	) > ${predFName}-import.logic
+
+done
+)
+elapsedTime
+
+
+###############################################################################
+
+[[ $# -ge 2 ]] && WORKSPACE="$2" || WORKSPACE='hg-repository'
+cat $SCRIPT_PATH/run.lb | sed 's/{repository}/'"$WORKSPACE"'/' > run.lb
+cat $SCRIPT_PATH/queries.lb | sed 's/{repository}/'"$WORKSPACE"'/' > queries.lb
+cp $SCRIPT_PATH/schema.logic .
+
+echo "$PROMPT importing to workspace '$WORKSPACE'..."
+[[ $WORKSPACE = 'hg-repository' ]] && echo "$PROMPT_WAR TIP: second argument can be the name of the workspace" || true
+lb run.lb
+
+echo "$PROMPT issuing queries..."
+lb queries.lb
+
+echo "$PROMPT cleanup..."
+rm -rf schema.logic run.lb queries.lb csvs/ imports/ 

@@ -1,0 +1,22 @@
+create --overwrite {repository}
+
+transaction
+	addblock --file schema.logic
+	exec --file imports/Author-import.logic
+	exec --file imports/author_name-import.logic
+	exec --file imports/author_email-import.logic
+	exec --file imports/Branch-import.logic
+	exec --file imports/branch_closedAfterNode-import.logic
+	exec --file imports/Node-import.logic
+	exec --file imports/node_date-import.logic
+	exec --file imports/node_desc-import.logic
+	exec --file imports/node_author-import.logic
+	exec --file imports/node_branch-import.logic
+	exec --file imports/node_child-import.logic
+	exec --file imports/node_files_add-import.logic
+	exec --file imports/node_files_del-import.logic
+	exec --file imports/node_files_mod-import.logic
+	exec --file imports/node_revision-import.logic
+	exec --file imports/node_tag-import.logic
+	exec --file imports/Tag-import.logic
+commit

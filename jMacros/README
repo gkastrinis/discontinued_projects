@@ -1,0 +1,59 @@
+With JMacros you can write simple yet effective text macros with no effort.
+
+JMacros currently support the following
+
+-- Including a file
+@{:PATH_TO_FILE}
+
+eg.
+@{:dir1/includeThis.txt}
+
+
+-- Defining a Flag
+@{#FLAG_NAME}
+
+eg.
+@{#TESTFLAG1}
+
+
+-- Defining a Named Macro
+@{#NAMED_MACRO(ARGUMENTS)}BODY@
+
+eg.
+@{#TEST_MACRO()} This is the body of the named macro @
+@{#TEST_MACRO2(Arg1, Arg2)} Usage of the arguments is done like that: $Arg1 $Arg2
+
+
+-- Calling a Named Macro
+$NAMED_MACRO(ARGUMENTS)
+
+eg.
+$(TEST_MACRO2(1, 3)
+
+
+-- Looping (can be nested)
+@{NUMBER_OF_LOOPS, LOOP_VARIABLE}BODY@
+
+eg.
+@{2, I} Repeat this 2 times. Loop $I @
+@{2, I} Repeat this @{3, J} and that $I $J @ @
+
+
+-- Conditions
+@{?FLAG_NAME}BODY@
+
+eg.
+@{?TESTFLAG1} Conditional text here @
+
+More complex conditions are supported as well as parentheses.
+Operands: not (!), OR (|), AND (&)
+
+eg.
+@{!(?FLAG1 | ?FLAG2)} Text @
+@{?FLAG1 & (?FLAG2 | !?FLAG3)} Text @
+
+
+TODO:
+-- Loop through Flag list (eg. @{FLAG1, FLAG2, FLAG3}BODY@ will loop 3 times)
+-- More complex expressions (eg. ${I + J * 2})
+-- Named Macros with variable number of arguments (eg. @{#VARMACRO(Arg1, ...)}BODY@)

@@ -1,0 +1,9 @@
+http://docs.oracle.com/javase/tutorial/uiswing/components/tabbedpane.html
+http://www.dreamincode.net/forums/topic/206344-basic-gui-in-java-using-jframes/
+https://blog.cedric.ws/multiple-languages-for-your-java-application
+http://docs.oracle.com/javase/7/docs/api/java/util/ResourceBundle.html
+http://docs.oracle.com/javase/7/docs/api/java/util/Locale.html
+https://lostechies.com/derekgreer/2007/08/25/interactive-application-architecture/
+http://www.sqlite.org/foreignkeys.html
+http://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html
+http://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html

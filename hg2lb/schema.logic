@@ -1,0 +1,20 @@
+Author(a), author:key(a:k) -> string(k).
+Branch(b), branch:name(b:n) -> string(n).
+File(f), file:name(f:n) -> string(n).
+Node(n), node:hash(n:h) -> string(h).
+Tag(t), tag:name(t:n) -> string(n).
+
+author:name[a] = n -> Author(a), string(n).
+author:email[a] = e -> Author(a), string(e).
+branch:closedAfterNode[b] = n -> Branch(b), Node(n).
+node:revision[n] = r -> Node(n), int[64](r).
+node:tag[n] = t -> Node(n), Tag(t).
+node:date[n] = d -> Node(n), datetime(d).
+node:desc[n] = d -> Node(n), string(d).
+node:author[n] = a -> Node(n), Author(a).
+node:branch[n] = b -> Node(n), Branch(b).
+
+node:child(n, c) -> Node(n), Node(c).
+node:files:add(n, f) -> Node(n), File(f).
+node:files:del(n, f) -> Node(n), File(f).
+node:files:mod(n, f) -> Node(n), File(f).

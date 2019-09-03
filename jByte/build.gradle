@@ -1,0 +1,19 @@
+apply plugin: 'c'
+
+task wrapper(type: Wrapper) {
+	gradleVersion = 2.4
+}
+
+model {
+	components {
+		jbyte(NativeExecutableSpec) {
+			sources {
+				c {
+					source {
+						srcDir "src/main/c"
+					}
+				}
+			}
+		}
+	}
+}

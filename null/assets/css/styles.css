@@ -1,0 +1,315 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html, body
+{
+	height: 100%;
+}
+body
+{
+	background: #DDD;
+	font: normal 1.1em Arial, Helvetica, sans-serif;
+}
+a
+{
+	color: #0568c3;
+	font-weight: bold;
+	text-decoration: none;
+}
+a:hover
+{
+	color: white;
+}
+img
+{
+	vertical-align: middle;
+}
+h2
+{
+	margin: 5px auto;
+	color: #333;
+	text-align: center;
+	text-shadow: #CCC 0px 1px 0px;
+}
+
+#logo
+{
+	display: inline-block;
+	width: 100%;
+	margin: 0 auto 0 auto;
+	margin-left: -70px;
+	margin-right: -70px;
+}
+
+/* Style for button based on the CSS from tweeplus http://tweeplus.com/# by Lea Verou */
+button,
+#login input[type="submit"]
+{
+	padding: .3em 1em;
+	margin: .5em auto .5em auto;
+	width: 250px;
+	min-width: 250px;
+	display: block;
+	color: white;
+	font: inherit;
+	font-size: 1.3em;
+	font-weight: bold;
+	text-shadow: .1em .1em .1em rgba(0,0,0,.6);
+
+	background-color: rgba(0,0,0,.5);
+	background-image: -moz-linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0) 80%);
+	background-image: -ms-linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0) 80%);
+	background-image: -o-linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0) 80%);
+	background-image: -webkit-linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0) 80%);
+	background-origin: border-box;
+
+	border: 1px solid #333;
+	border-color: rgba(0,0,0,.3);
+	-moz-border-radius: .3em;
+	border-radius: .3em;
+	-moz-transition: .5s background;
+	-ms-transition: .5s background;
+	-o-transition: .5s background;
+	-webkit-transition: .5s background;
+	transition: .5s background;
+	box-shadow: 0 1px rgba(255, 255, 255, .4) inset, 0 .1em .2em -.1em black;
+}
+
+button:hover,
+#login input[type="submit"]:hover
+{
+	background-color: #0568c3;
+}
+
+#login
+{
+	width: 320px;
+	margin: 30px auto 30px auto;
+	padding: 20px;
+	background: white;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	box-shadow: 4px 4px 4px -2px #333;
+}
+#login label,
+#login input[type="text"],
+#login input[type="password"]
+{
+	display: block;
+	width: 300px;
+	padding: 6px;
+	font-size: 1.2em;
+	border: 0px;
+	-moz-border-radius: .4em;
+	border-radius: .4em;
+}
+#login input[type="text"],
+#login input[type="password"]
+{
+	margin: 0 auto;
+	box-shadow: inset 1px 1px 2px #333;
+}
+#login label
+{
+	color: #555;
+	text-shadow: #CCC 0px 1px 0px;
+}
+
+div[data-role="header"] > h1,
+div[data-role="footer"] > h4
+{
+	margin: 0;
+	color: white;
+	text-align: center;
+	background: #333;
+}
+div[data-role="header"] > h1
+{
+	padding: 8px;
+}
+div[data-role="footer"] > h4
+{
+	padding: 12px;
+}
+div[data-role="footer"]
+{
+	height: 40px;
+	font-size: .8em;
+}
+div[data-role="content"] a:hover
+{
+	color: #333;
+}
+
+#lists
+{
+	padding: 0 10px 0 10px;
+	text-align: center;
+}
+#lists > a
+{
+	display: inline-block;
+	width: 100px;
+	margin: 3px 0 3px 0;
+	padding: 5px;
+	font-size: .8em;
+	white-space:nowrap;
+	background: white;
+	border: 1px solid #333;
+	-moz-border-radius: .4em;
+	border-radius: .4em;
+	box-shadow: 2px 2px 2px -2px #333;
+}
+#lists > a:hover,
+#lists > a.current
+{
+	color: #0568c3;
+	background: #333;
+}
+
+#entries
+{
+	margin: 10px 0;
+}
+#entries > div
+{
+	margin: 0 auto 4px auto;
+	margin-left: 20px;
+	margin-right: 20px;
+	line-height: 25px;
+	padding: 5px;
+	background: #EEE;
+	box-shadow: 2px 2px 2px -2px #333;
+}
+#entries > div#addEntry
+{
+	padding: 1px;
+}
+#entries > div#addEntry:hover
+{
+	background: #EEE;
+}
+#entries > div#addEntry > button
+{
+	font-size: 1.1em;
+}
+#entries > div:hover
+{
+	background: #CCC;
+}
+#entries > div > div
+{
+	visibility: hidden;
+	display: inline-block;
+	margin-right: 10px;
+	float: right;
+}
+#entries > div:hover > div
+{
+	visibility: visible;
+}
+#entries > div > div > img
+{
+	cursor: pointer;
+}
+#entries > div > a
+{
+	display: inline-block;
+	margin-left: 5px;
+}
+#addContent > div,
+#editContent > div
+{
+	margin: 15px auto;
+}
+#addContent input[type="text"],
+#editContent input[type="text"]
+{
+	width: 70%;
+	margin-left: 10px;
+	padding: 2px 6px 2px 6px;
+	font-size: 1.2em;
+	background: #EFEFEF;
+	border: 0px;
+	-moz-border-radius: .4em;
+	border-radius: .4em;
+    box-shadow: inset 1px 1px 2px #333;
+}
+
+.error
+{
+	padding: 10px;
+	color: #DD2222;
+	text-align: center;
+}
+.important
+{
+	color: #0568c3;
+	font-weight: bold;
+}
+.done
+{
+	color: #BBB;
+	text-decoration: line-through;
+}
+
+#settings > div
+{
+	width: 80%;
+}
+#menu
+{
+	cursor: pointer;
+}
+.menuBox
+{
+	display: inline-block;
+	width: 100px;
+	margin: 3px 5px 3px 5px;
+	padding: 5px;
+	color: #0568c3;
+	font-size: .9em;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+}
+.menuBox:hover
+{
+	background: #333;
+	-moz-border-radius: .4em;
+	border-radius: .4em;
+	box-shadow: 3px 3px 3px -2px #333;
+}
+.menuBox >img
+{
+	margin-bottom: 5px;
+}
+
+#confirmBox > div
+{
+	width: 45%;
+	min-width: 400px;
+	text-align: center;
+}
+#confirmBox .popUpContent > div
+{
+	font-size: 1.3em;
+}
+#confirmBox .popUpContent > div > span
+{
+	color: #0568c3;
+	font-weight: bold;
+}
+#confirmBox .popUpContent > button
+{
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#addContent,
+#deleteContent,
+#editContent
+{
+	display: none;
+}

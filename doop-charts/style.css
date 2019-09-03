@@ -1,0 +1,372 @@
+/********** General CSS **********/
+
+body
+{
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	color: white;
+	background: url('bg.gif');
+	font: normal 1.1em Arial, Helvetica, sans-serif;
+}
+
+h1, h2
+{
+	text-align: center;
+	color: #F2F2F2;
+	text-shadow: #333 1px 1px 1px;
+}
+
+h1
+{
+	margin-bottom: 1.2em;
+}
+
+h2
+{
+	margin: 0 0 20px 0;
+}
+
+a, a:visited
+{
+	color: #F2F2F2;
+	font-weight: bold;
+	text-decoration: none;
+	text-shadow: #333 1px 1px 1px;
+}
+a:hover,
+.selectedLink
+{
+	color: #408FFF !important;
+}
+
+/* Style for button based on the CSS from tweeplus http://tweeplus.com/# by Lea Verou */
+button,
+input[type="submit"]
+{
+	padding: .3em 1em;
+	margin: .5em auto .5em auto;
+	width: 250px;
+	min-width: 250px;
+	display: block;
+	color: white;
+	font: inherit;
+	font-size: 1.3em;
+	font-weight: bold;
+	text-shadow: .1em .1em .1em rgba(0,0,0,.6);
+
+	background-color: rgba(0,0,0,.5);
+	background-image: -moz-linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0) 80%);
+	background-image: -ms-linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0) 80%);
+	background-image: -o-linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0) 80%);
+	background-image: -webkit-linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,0) 80%);
+	background-origin: border-box;
+
+	border: 1px solid #333;
+	border-color: rgba(0,0,0,.3);
+	-moz-border-radius: .3em;
+	border-radius: .3em;
+	-moz-transition: .5s background;
+	-ms-transition: .5s background;
+	-o-transition: .5s background;
+	-webkit-transition: .5s background;
+	transition: .5s background;
+	box-shadow: 0 1px rgba(255, 255, 255, .4) inset, 0 .1em .2em -.1em black;
+}
+
+button:hover,
+input[type="submit"]:hover
+{
+	background-color: #0E69E8;
+}
+
+.button
+{
+	text-align: center;
+}
+
+#footer
+{
+	margin-top: 100px;
+	margin-bottom: 10px;
+	text-align: center;
+	position: relative;
+	bottom: 0px;
+}
+#footer > span
+{
+	color: #408FFF;
+	font-weight: bold;
+}
+
+#main
+{
+	max-width: 1200px;
+	margin: 0 auto 10px auto;
+	text-align: center;
+}
+#menu > button,
+#menu > h2
+{
+	display: inline-block;
+}
+#menu > button
+{
+	margin: 0 .8em 0 .8em;
+}
+#menu > h2
+{
+	margin: 20px 0 20px 0;
+}
+
+#reportForm1,
+#reportForm2,
+#reportForm3,
+#metrics,
+#previousReports
+{
+	display: none;
+}
+#reportForm1 > div,
+#reportForm2 > div,
+#reportForm3 > div
+{
+	text-align: right;
+	display: inline-block;
+	padding: 10px;
+	background: rgba(9, 67, 148, .3);
+	-moz-border-radius: .6em;
+	border-radius: .6em;
+}
+
+input,
+textarea
+{
+	font: normal 1.1em Arial, Helvetica, sans-serif;
+}
+
+form label,
+form span
+{
+	text-shadow: #333 1px 1px 1px;
+}
+form label,
+form span,
+form input[type="text"],
+form input[type="number"],
+textarea
+{
+	font-size: 1.1em;
+}
+form input[type="text"],
+form input[type="number"],
+textarea
+{
+	width: 350px;
+	padding: 5px;
+	margin-bottom: 10px;
+	border: 0px;
+	-moz-border-radius: .3em;
+	border-radius: .3em;
+}
+form input[readonly="readonly"],
+textarea[readonly="readonly"]
+{
+	background: rgba(255, 255, 255, .7);
+}
+textarea
+{
+	height: 100px;
+}
+#changeMetrics
+{
+	cursor: pointer;
+}
+#metrics
+{
+	height: 400px;
+	margin-top: 10px;
+	font-size: .8em;
+}
+#groups,
+#elements
+{
+	width: 70px;
+}
+
+.tab
+{
+	display: inline-block;
+	padding: 1px 5px 1px 5px;
+	margin: 0 2px 2px 0;
+	background: rgba(153, 153, 153, .4);
+	-moz-border-radius: .3em;
+	border-radius: .3em;
+	cursor: pointer;
+}
+.selectedTab,
+.tab:hover
+{
+	background: rgba(255, 255, 255, .6);
+}
+.tabContent
+{
+	margin-top: 5px;
+	display: none;
+}
+#content0 > textarea
+{
+	display: block;
+	margin: 0 auto 0 auto;
+}
+#content1
+{
+	display: block;
+}
+
+#reportForm3 > div
+{
+	text-align: left;
+}
+.element
+{
+	float: left;
+	padding: 10px;
+	margin: 0 5px 10px 5px;
+	border: 1px dashed #999;
+	-moz-border-radius: .6em;
+	border-radius: .6em;
+}
+#reportForm3 label
+{
+	display: block;
+}
+#reportForm3 textarea
+{
+	height: 400px;
+	font-size: .9em;
+}
+
+.error
+{
+	display: none;
+	margin-bottom: 3px;
+	color: #FF4A4A;
+}
+
+#reportForm3 .error
+{
+	margin: 0;
+	float: right;
+}
+
+.errorTab
+{
+	color: #FF4A4A !important;
+}
+
+#chartHead
+{
+	width: 550px;
+	padding-bottom: 10px;
+	margin: 0 auto 10px auto;
+	text-align: center;
+	background: rgba(9, 67, 148, .3);
+	-moz-border-radius: .6em;
+	border-radius: .6em;
+}
+#chartHead > h2
+{
+	padding-top: 5px;
+	margin: 0 0 5px 0;
+}
+#chartHead textarea
+{
+	width: 500px;
+	height: 100px;
+	padding: 10px;
+}
+
+#report
+{
+	text-align: center;
+}
+#report > div.first
+{
+	width: 1400px;
+	display: inline-block;
+	white-space: nowrap;
+}
+#report > div.seperator
+{
+	margin-bottom: 5px;
+	clear: both;
+}
+#report > div > div
+{
+	float: left;
+}
+
+.comment
+{
+	width: 370px;
+	margin-left: 20px;
+	text-align: center;
+}
+.comment textarea
+{
+	padding: 10px;
+	margin: 0;
+	height: 280px;
+}
+.chart
+{
+	width: 1000px;
+}
+
+#previousReports
+{
+	width: 460px;
+	padding: 10px;
+	margin: 0 auto 0 auto;
+	background: rgba(9, 67, 148, .3);
+	-moz-border-radius: .6em;
+	border-radius: .6em;
+}
+#previousReports > div
+{
+	padding: 3px 5px 3px 5px;
+	text-align: left;
+}
+
+#metricsEnabled,
+#elementsEnabled
+{
+	display: none;
+	width: 500px;
+	padding: 10px 10px 0 10px;
+	margin: 15px auto 0 auto;
+	text-align: left;
+	border: 1px dashed #999;
+	-moz-border-radius: .6em;
+	border-radius: .6em;
+}
+#metricsEnabled > div,
+#elementsEnabled > div
+{
+	padding-left: 5px;
+}
+#metricsEnabled > div:hover,
+#elementsEnabled > div:hover
+{
+	font-weight: bold;
+	background: rgba(255, 255, 255, .3);
+	cursor: pointer;
+}
+#metricsEnabled input[type="checkbox"],
+#elementsEnabled input[type="checkbox"]
+{
+	display: inline-block;
+	float: right;
+	margin-left: 5px;
+}

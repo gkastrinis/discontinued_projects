@@ -1,0 +1,6 @@
+Usage: ./hg2lb <ROOT PATH TO REPOSITORY> [<WORKSPACE NAME>]
+Need to have cloned repository locally
+
+
+TODO: Add incremental support (re-running the tool, after a number of commits)
+TODO: Automate the import list of predicates
