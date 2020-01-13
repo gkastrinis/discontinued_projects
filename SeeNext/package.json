@@ -1,0 +1,40 @@
+{
+  "name": "seenext",
+  "productName": "SeeNext",
+  "version": "1.3.0",
+  "description": "SeeNext",
+  "author": "George Kastrinis <george.kast@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gkastrinis/foo.git"
+  },
+  "main": "app.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "com.electron.seeNext",
+    "productName": "SeeNext",
+    "win": {
+      "target": "NSIS",
+      "icon": "build/dota2-inv.png",
+      "artifactName": "${productName} Setup.${ext}"
+    }
+  },
+  "devDependencies": {
+    "dialog": "^0.3.1",
+    "electron": "^2.0.8",
+    "electron-builder": "^20.28.4"
+  },
+  "dependencies": {
+    "ajv": "^6.10.2",
+    "electron-store": "^2.0.0",
+    "jquery": "^3.4.1",
+    "node": "^13.5.0",
+    "npm": "^6.13.6",
+    "puppeteer": "^2.0.0"
+  }
+}

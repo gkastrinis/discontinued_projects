@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Unica+One"/>
+	<link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="c-b-dark-gray c-white">
+<div id="winBar" class="c-b-dark-gray"></div>
+<div id="main">
+
+</div>
+</body>
+<script>
+	window.$ = window.jQuery = require('jquery');
+	require('./renderer.js')
+	const puppeteer = require('puppeteer');
+
+	(async () => {
+		const browser = await puppeteer.launch();
+		const page = await browser.newPage();
+		await page.goto('http://www.villagecinemas.gr/el/tainies/paizontai-tora/');
+		// await page.screenshot({path: 'example.png'});
+
+		const movies = await page.evaluate(() => {
+			return $.map( $(".movies_list .movie_box"), (i) => {
+				return {
+					a: $(i).find(".box_title a").text(),
+					b: $(i).find(".box_title2").text(),
+					c: $(i).find(".img img").attr("src"),
+					d: $(i).find(".box_title a").attr("href")
+				};
+			});
+		});
+
+		let visitedMovies = new Map()
+		movies.forEach((i) => {
+			if (!visitedMovies.get(i.c)) {
+				$('#main').append('<img src="http://www.villagecinemas.gr' + i.c + '" />');
+				visitedMovies.set(i.c, true);
+			}
+		});
+
+		// (async () => {
+		const details = await browser.newPage();
+		await details.goto('http://www.villagecinemas.gr/' + movies[0].d);
+		await details.screenshot({path: 'example.png'});
+		details.close();
+		// });
+
+		console.log(movies);
+
+		await browser.close();
+	})();
+</script>
+</html>

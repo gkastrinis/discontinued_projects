@@ -1,0 +1,50 @@
+@import 'colors.css';
+@import 'winbar.css';
+@import 'menu.css';
+
+body { font-family: 'Unica One'; }
+
+.col > h2 { font-weight: bold; }
+
+#dotabuff > img { height: 64px; }
+
+#empty {
+    width: 80vw;
+    margin: 0 auto;
+    font-size: 2em;
+}
+
+#editMMR { display: none; }
+
+#editMMR > div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#editMMR > div:nth-child(1) > div > span {
+    display: inline-block;
+    width: 120px;
+    text-align: center;
+}
+
+#editMMR > div:nth-child(1) > div > input { width: 40vw; }
+
+#editMMR > div:nth-child(2) > input {
+    display: block;
+    width: 30vw;
+}
+
+#editMMR > div:nth-child(2) > a {
+	display: block;
+	margin-top: 5px;
+	text-align: center;
+}
+
+#editMMR > div:nth-child(2) > a:hover {
+	text-decoration: none;
+}
+
+#editMMR > div:nth-child(3) > a {
+    margin: 10px 5px 10px 5px;
+    display: inline-block;
+}

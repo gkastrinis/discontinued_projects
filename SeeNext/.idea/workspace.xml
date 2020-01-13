@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c722ec7d-aeb3-45c8-a70f-f62ba4bae3f0" name="Default Changelist" comment="Fixes" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="SeeNext" />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>winBar</find>
+      <find>conte</find>
+      <find>contex</find>
+      <find>#editor</find>
+      <find>currentIteration</find>
+      <find>dataItera</find>
+      <find>currentItera</find>
+      <find>find</find>
+      <find>MMR</find>
+      <find>games</find>
+      <find>remove</find>
+      <find>GAMES</find>
+      <find>data.mmr</find>
+      <find>iteration</find>
+      <find>current</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1VcI7Dq3x7rvC2bRwskwdYZR8Ku" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="8.11.4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+  </component>
+  <component name="RunManager" selected="npm.start">
+    <configuration name="dist" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dist" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.start" />
+      <item itemvalue="npm.dist" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.dist" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c722ec7d-aeb3-45c8-a70f-f62ba4bae3f0" name="Default Changelist" comment="" />
+      <created>1538659115087</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1538659115087</updated>
+      <workItem from="1538659120660" duration="205000" />
+      <workItem from="1538660454576" duration="1947000" />
+      <workItem from="1538671739797" duration="1052000" />
+      <workItem from="1538736121214" duration="4245000" />
+      <workItem from="1538741630566" duration="11536000" />
+      <workItem from="1538769343530" duration="5094000" />
+      <workItem from="1538837890637" duration="2911000" />
+      <workItem from="1539784693651" duration="13000" />
+      <workItem from="1577545791288" duration="1757000" />
+      <workItem from="1577549596157" duration="2844000" />
+      <workItem from="1577553292675" duration="616000" />
+      <workItem from="1578246791111" duration="633000" />
+      <workItem from="1578255880617" duration="13297000" />
+      <workItem from="1578324886798" duration="744000" />
+      <workItem from="1578763136092" duration="2311000" />
+    </task>
+    <task id="LOCAL-00001" summary="Fixes">
+      <created>1538662319573</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1538662319573</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1899" height="284" key="GridCell.Tab.0.bottom" timestamp="1578855011582">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578855011582" />
+    <state width="1899" height="284" key="GridCell.Tab.0.center" timestamp="1578855011582">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="284" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578855011582" />
+    <state width="1899" height="284" key="GridCell.Tab.0.left" timestamp="1578855011582">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="284" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578855011582" />
+    <state width="1899" height="284" key="GridCell.Tab.0.right" timestamp="1578855011582">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="284" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578855011582" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1578257866347">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578257866347" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1578261967489">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578261967489" />
+  </component>
+</project>

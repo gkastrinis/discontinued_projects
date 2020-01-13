@@ -1,0 +1,82 @@
+body {
+    border: 1px solid #48545c;
+    overflow: hidden;
+}
+
+.winBar {
+    display: block;
+    position: absolute;
+    height: 32px;
+    width: 100%;
+    /*width: calc(100% - 2px); / *Compensate for body 1px border*/
+    padding: 4px;
+}
+
+#winBar-drag-region {
+    width: 100%;
+    height: 100%;
+    -webkit-app-region: drag;
+    display: grid;
+    grid-template-columns: auto 138px;
+}
+
+#winBar-title {
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-left: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+}
+
+#winBar-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 46px);
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    font-family: "Segoe MDL2 Assets";
+    font-size: 10px;
+    -webkit-app-region: no-drag;
+}
+
+.winBar-btn {
+    user-select: none;
+    cursor: default;
+    opacity: 0.8;
+    grid-row: 1 / span 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.winBar-btn:hover {
+    background: rgba(255,255,255,0.2);
+    opacity: 1;
+}
+
+#winBar-btn-min { grid-column: 1; }
+#winBar-btn-max, #winBar-btn-restore { grid-column: 2; }
+#winBar-btn-close { grid-column: 3; }
+#winBar-btn-restore { display: none; }
+
+#winBar-btn-close:hover {
+    background: #E81123;
+}
+
+#main {
+    height: 100vh;
+    /* height: calc(100% - 32px); */
+    margin-top: 32px;
+    /* padding: 20px; */
+    /* overflow-y: scroll; */
+    overflow-y: auto;
+    /* margin-right: -50px;
+    padding-right: 50px; */
+    /* box-sizing: content-box; */
+}
